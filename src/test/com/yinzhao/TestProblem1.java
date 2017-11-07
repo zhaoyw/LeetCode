@@ -6,18 +6,14 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertEquals;
 
-/**
- * Created by zhaoyongwang on 2017/11/7.
- */
 public class TestProblem1 {
 
-    private Solution solution;
+    private Problem1Solution solution;
 
     @Before
     public void setUp() throws Exception {
-        solution = new Solution();
+        solution = new Problem1Solution();
     }
 
     @Test
