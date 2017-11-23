@@ -1,11 +1,35 @@
 package com.yinzhao;
 
-/**
- * Created by zhaoyongwang on 2017/11/7.
- */
 public class Problem2Solution {
     public ListNode addTwoNumbers(ListNode node1, ListNode node2) {
-        return addTwoNumbers(node1, node2, 0);
+
+        ListNode dummyNode = new ListNode(0);
+
+        int carrier = 0;
+        ListNode fNode = node1;
+        ListNode sNode = node2;
+        ListNode curNode = dummyNode;
+
+        while (fNode != null || sNode != null) {
+            int sum = ((fNode != null) ? fNode.getVal() : 0) + ((sNode != null) ? sNode.getVal() : 0) + carrier;
+
+            carrier = sum / 10;
+            int val = sum % 10;
+            ListNode node = new ListNode(val);
+            curNode.setNext(node);
+            curNode = node;
+
+            fNode = fNode != null ? fNode.getNext() : null;
+            sNode = sNode != null ? sNode.getNext() : null;
+        }
+
+        if (carrier != 0) {
+            curNode.setNext(new ListNode(carrier));
+        }
+
+        return dummyNode.getNext();
+
+//        return addTwoNumbers(node1, node2, 0);
     }
 
     private ListNode addTwoNumbers(ListNode node1, ListNode node2, int add) {
